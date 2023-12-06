@@ -50,12 +50,14 @@ public class GridItemAdapter extends RecyclerView.Adapter<GridItemAdapter.ViewFu
     @Override
     public void onBindViewHolder(@NonNull ViewFucker holder, int position) {
         holder.gridName.setText(gridItemArrayList.get(holder.getAdapterPosition()).getGridName());
+        holder.gridName.setSelected(true);
         holder.gridIcon.setImageResource(gridItemArrayList.get(holder.getAdapterPosition()).getGridIcon());
         if (gridItemArrayList.get(holder.getAdapterPosition()).getGridDes().isEmpty()){
             holder.gridName.setY(20);
             holder.gridDes.setVisibility(View.INVISIBLE);
         }else{
             holder.gridDes.setText(gridItemArrayList.get(holder.getAdapterPosition()).getGridDes());
+            holder.gridDes.setSelected(true);
         }
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {

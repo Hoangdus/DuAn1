@@ -31,6 +31,11 @@
                 android:layout_height="wrap_content"
                 android:text="Place Holder"
                 android:id="@+id/txtTenMatHang"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:fadingEdge="horizontal"
                 android:textSize="20sp"
                 android:textStyle="bold">
             </TextView>
@@ -62,6 +67,11 @@
                 android:layout_height="wrap_content"
                 android:text="Place Holder"
                 android:id="@+id/txtSoLuong"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:fadingEdge="horizontal"
                 android:textSize="17sp"
                 android:textStyle="normal">
             </TextView>
@@ -69,8 +79,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chinh_sua"
+                android:text="Nhấn giữ để chỉnh sửa"
                 android:id="@+id/txtGiaMatHang"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:fadingEdge="horizontal"
                 android:textSize="13sp"
                 android:textStyle="normal"
                 android:textColor="#F19C99">

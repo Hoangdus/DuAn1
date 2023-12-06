@@ -1,95 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments_mini.ThemMatHang">
+    tools:context=".fragments_mini.ThemMatHang"
+    android:id="@+id/framelayout">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/Theme.Material3.DayNight"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông tin mặt hàng"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtTenmathangLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên mặt hàng"
-                android:id="@+id/edtTenmathang"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtNhaCungCapLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nhà cung cấp"
-                android:id="@+id/edtNhacungcap"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtNganhhangLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ngành hàng"
-                android:id="@+id/edtNganhhang"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
+        android:id="@+id/scrollView"
+        tools:ignore="UselessParent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:theme="@style/Theme.Material3.DayNight"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thông tin mặt hàng"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="83dp"
-                android:layout_weight="0.5"
                 app:boxStrokeWidth="3dp"
                 app:boxStrokeColor="@color/primary_color"
                 app:boxCornerRadiusBottomEnd="8dp"
@@ -97,22 +39,19 @@
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxStrokeErrorColor="@android:color/holo_red_light"
-                android:id="@+id/edtGianhapLayout"
-                android:layout_marginRight="10dp">
+                android:id="@+id/edtTenmathangLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Giá nhập"
-                    android:inputType="number"
-                    android:id="@+id/edtGianhap"
+                    android:hint="Tên mặt hàng"
+                    android:id="@+id/edtTenmathang"
                     android:lines="1">
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="83dp"
-                android:layout_weight="0.5"
                 app:boxStrokeWidth="3dp"
                 app:boxStrokeColor="@color/primary_color"
                 app:boxCornerRadiusBottomEnd="8dp"
@@ -120,28 +59,19 @@
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxStrokeErrorColor="@android:color/holo_red_light"
-                android:id="@+id/edtGiabanLayout">
+                android:id="@+id/edtNhaCungCapLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Giá bán"
-                    android:inputType="number"
-                    android:id="@+id/edtGiaban"
+                    android:hint="Nhà cung cấp"
+                    android:id="@+id/edtNhacungcap"
                     android:lines="1">
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="83dp"
-                android:layout_weight="0.75"
                 app:boxStrokeWidth="3dp"
                 app:boxStrokeColor="@color/primary_color"
                 app:boxCornerRadiusBottomEnd="8dp"
@@ -149,92 +79,173 @@
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxStrokeErrorColor="@android:color/holo_red_light"
-                android:id="@+id/edtSoluongLayout"
-                android:layout_marginRight="10dp">
+                android:id="@+id/edtNganhhangLayout">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Số lượng"
-                    android:inputType="number"
-                    android:id="@+id/edtSoluong"
+                    android:hint="Ngành hàng"
+                    android:id="@+id/edtNganhhang"
                     android:lines="1">
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="83dp"
-                android:layout_weight="0.25"
-                app:boxStrokeWidth="3dp"
-                app:boxStrokeColor="@color/primary_color"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxStrokeErrorColor="@android:color/holo_red_light"
-                android:id="@+id/edtDVTLayout">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="83dp"
+                    android:layout_weight="0.5"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeColor="@color/primary_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxStrokeErrorColor="@android:color/holo_red_light"
+                    android:id="@+id/edtGianhapLayout"
+                    android:layout_marginRight="10dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Giá nhập"
+                        android:inputType="number"
+                        android:id="@+id/edtGianhap"
+                        android:lines="1">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="83dp"
+                    android:layout_weight="0.5"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeColor="@color/primary_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxStrokeErrorColor="@android:color/holo_red_light"
+                    android:id="@+id/edtGiabanLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Giá bán"
+                        android:inputType="number"
+                        android:id="@+id/edtGiaban"
+                        android:lines="1">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="83dp"
+                    android:layout_weight="0.75"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeColor="@color/primary_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxStrokeErrorColor="@android:color/holo_red_light"
+                    android:id="@+id/edtSoluongLayout"
+                    android:layout_marginRight="10dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Số lượng"
+                        android:inputType="number"
+                        android:id="@+id/edtSoluong"
+                        android:lines="1">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="83dp"
+                    android:layout_weight="0.25"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeColor="@color/primary_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxStrokeErrorColor="@android:color/holo_red_light"
+                    android:id="@+id/edtDVTLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DVT"
+                        android:id="@+id/edtDVT"
+                        android:lines="1">
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--    <com.google.android.material.textfield.TextInputLayout-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="120dp"-->
+            <!--        app:boxStrokeWidth="3dp"-->
+            <!--        app:boxStrokeColor="@color/primary_color"-->
+            <!--        app:boxCornerRadiusBottomEnd="8dp"-->
+            <!--        app:boxCornerRadiusBottomStart="8dp"-->
+            <!--        app:boxCornerRadiusTopStart="8dp"-->
+            <!--        app:boxCornerRadiusTopEnd="8dp"-->
+            <!--        app:boxStrokeErrorColor="@android:color/holo_red_light"-->
+            <!--        android:id="@+id/edtGhichuLayout">-->
+            <!--        <com.google.android.material.textfield.TextInputEditText-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:hint="Ghi chú..."-->
+            <!--            android:gravity="start"-->
+            <!--            android:id="@+id/edtGhichu"-->
+            <!--            android:lines="3">-->
+            <!--        </com.google.android.material.textfield.TextInputEditText>-->
+            <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="DVT"
-                    android:id="@+id/edtDVT"
-                    android:lines="1">
-                </com.google.android.material.textfield.TextInputEditText>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_weight="0.5"
+                    android:layout_marginEnd="10dp"
+                    android:text="Hủy"
+                    android:id="@+id/btnCancel"
+                    android:background="@drawable/cancel_button_background"/>
 
-        </LinearLayout>
-
-        <!--    <com.google.android.material.textfield.TextInputLayout-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="120dp"-->
-        <!--        app:boxStrokeWidth="3dp"-->
-        <!--        app:boxStrokeColor="@color/primary_color"-->
-        <!--        app:boxCornerRadiusBottomEnd="8dp"-->
-        <!--        app:boxCornerRadiusBottomStart="8dp"-->
-        <!--        app:boxCornerRadiusTopStart="8dp"-->
-        <!--        app:boxCornerRadiusTopEnd="8dp"-->
-        <!--        app:boxStrokeErrorColor="@android:color/holo_red_light"-->
-        <!--        android:id="@+id/edtGhichuLayout">-->
-        <!--        <com.google.android.material.textfield.TextInputEditText-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="Ghi chú..."-->
-        <!--            android:gravity="start"-->
-        <!--            android:id="@+id/edtGhichu"-->
-        <!--            android:lines="3">-->
-        <!--        </com.google.android.material.textfield.TextInputEditText>-->
-        <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Hoàn THÀNH"
+                    android:id="@+id/btnAdd"
+                    android:background="@drawable/button_background"/>
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginEnd="10dp"
-                android:text="Hủy"
-                android:id="@+id/btnCancel"
+                android:layout_marginTop="10dp"
+                android:text="Xóa"
+                android:id="@+id/btnDelete"
                 android:background="@drawable/cancel_button_background"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="Hoàn THÀNH"
-                android:id="@+id/btnAdd"
-                android:background="@drawable/button_background"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Xóa"
-            android:id="@+id/btnDelete"
-            android:background="@drawable/cancel_button_background"/>
-    </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+
+</FrameLayout>

@@ -5,7 +5,6 @@ public class KhachHang {
     private String HoTenKH;
     private String phoneKH;
     private String addressKH;
-
     private int trangThai;
 
     public int getTrangThai() {

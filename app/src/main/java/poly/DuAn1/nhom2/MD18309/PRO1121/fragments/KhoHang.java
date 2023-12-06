@@ -119,8 +119,8 @@ public class KhoHang extends Fragment implements OptionItemAdapter.OnItemClickCa
 
         //Khai Báo Fragment(Tạm Thời)
         danhSachMatHang = new DanhSachMatHang(this);
-        danhSachNhaCungCap = new DanhSachNhaCungCap(this);
-        danhSachNganhHang = new DanhSachNganhHang(this);
+        danhSachNhaCungCap = new DanhSachNhaCungCap(0, this);
+        danhSachNganhHang = new DanhSachNganhHang(0,this);
 
         btnTest.setVisibility(View.INVISIBLE);
 
@@ -184,7 +184,7 @@ public class KhoHang extends Fragment implements OptionItemAdapter.OnItemClickCa
         System.out.println("OK");
     }
 
-    private void openNCC(){
+    public void openNCC(){
 //        danhSachNhaCungCap = new DanhSachNhaCungCap();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
@@ -216,5 +216,15 @@ public class KhoHang extends Fragment implements OptionItemAdapter.OnItemClickCa
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
         toolBarTitle.setText("Danh Sách Mặt Hàng");
+    }
+
+    @Override
+    public void returnNCCData(int id, String tenNCC) {
+
+    }
+
+    @Override
+    public void returnNHData(int id, String tenNH) {
+
     }
 }

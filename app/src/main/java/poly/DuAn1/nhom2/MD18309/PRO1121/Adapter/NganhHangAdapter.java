@@ -27,7 +27,9 @@ public class NganhHangAdapter extends RecyclerView.Adapter<NganhHangAdapter.View
     private static OnItemClickCallBack onItemClickCallBack;
 
     public interface OnItemClickCallBack{
-        void onClickListener(int id, int holderPOS);
+        void onClickListener(int id, String ten);
+
+        void onLongClickListenter(int id, int holderPOS);
     }
 
 
@@ -90,11 +92,12 @@ public class NganhHangAdapter extends RecyclerView.Adapter<NganhHangAdapter.View
 
         @Override
         public void onClick(View v) {
+            onItemClickCallBack.onClickListener(Integer.parseInt(txtMaHangHang.getText().toString().replaceAll("[^0-9]", "")), txtTenNganhHang.getText().toString());
         }
 
         @Override
         public boolean onLongClick(View v) {
-            onItemClickCallBack.onClickListener(Integer.parseInt(txtMaHangHang.getText().toString().replaceAll("[^0-9]", "")), holderPOS);
+            onItemClickCallBack.onLongClickListenter(Integer.parseInt(txtMaHangHang.getText().toString().replaceAll("[^0-9]", "")), holderPOS);
             return true;
         }
     }

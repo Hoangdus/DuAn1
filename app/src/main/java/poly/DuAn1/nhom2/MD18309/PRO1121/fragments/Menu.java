@@ -102,6 +102,7 @@ public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack
         parentLayout = view.findViewById(R.id.linearLayout);
         LinearLayout btnChangePass = view.findViewById(R.id.btnChangePass);
         LinearLayout btnQLNhanVien = view.findViewById(R.id.btnQLNhanVien);
+        LinearLayout btnQLKhachHang = view.findViewById(R.id.btnQLKhachHang);
         LinearLayout btnThongKe = view.findViewById(R.id.btnThongKe);
         LinearLayout btnBaoCao = view.findViewById(R.id.btnBaoCao);
         LinearLayout btnLogOut = view.findViewById(R.id.btnLogOut);
@@ -110,31 +111,33 @@ public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack
         danhSachKhachHang = new DanhSachKhachHang(this);
         thongKe = new ThongKe(this);
         baoCao = new BaoCao(this);
-        doiMatKhau = new DoiMatKhau(this);
-
+        doiMatKhau = new DoiMatKhau(this, taiKhoan);
 
         //Hiện Thị Thông Tin
         txtHoTen.setText(taiKhoan.getHoTen());
-//        txtChucVu.setText(taiKhoan.getRole());
+
         if (taiKhoan.getRole().equalsIgnoreCase("QUANLY")){
             imgProfile.setImageResource(R.drawable.user_admin);
             txtChucVu.setText("Quản Lý");
         } else if (taiKhoan.getRole().equalsIgnoreCase("NhanVien")) {
             imgProfile.setImageResource(R.drawable.user);
             txtChucVu.setText("Nhân Viên");
+            btnQLNhanVien.setVisibility(View.GONE);
         }else {
             imgProfile.setImageResource(R.drawable.user);
             txtChucVu.setText("Người Dùng");
         }
 
         btnQLNhanVien.setOnClickListener(v -> {
-            parentLayout.setVisibility(View.INVISIBLE);
-            fragmentManager.beginTransaction().replace(R.id.framelayout, danhSachNhanVien).commit();
+            openQLNhanVien();
         });
 
         btnThongKe.setOnClickListener(v -> {
-            parentLayout.setVisibility(View.INVISIBLE);
-            fragmentManager.beginTransaction().replace(R.id.framelayout, thongKe).commit();
+            openThongKe();
+        });
+
+        btnQLKhachHang.setOnClickListener(v -> {
+            openQLKhachHang();
         });
 
         btnBaoCao.setOnClickListener(v -> {
@@ -152,9 +155,25 @@ public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack
         return view;
     }
 
+    public void openThongKe(){
+        parentLayout.setVisibility(View.INVISIBLE);
+        fragmentManager.beginTransaction().replace(R.id.framelayout, thongKe).commit();
+    }
+
+    public void openQLNhanVien(){
+        parentLayout.setVisibility(View.INVISIBLE);
+        fragmentManager.beginTransaction().replace(R.id.framelayout, danhSachNhanVien).commit();
+    }
+
+    public void openQLKhachHang(){
+        parentLayout.setVisibility(View.INVISIBLE);
+        fragmentManager.beginTransaction().replace(R.id.framelayout, danhSachKhachHang).commit();
+    }
+
     @Override
     public void exitFragment() {
         fragmentManager.beginTransaction().remove(danhSachNhanVien).commit();
+        fragmentManager.beginTransaction().remove(danhSachKhachHang).commit();
         fragmentManager.beginTransaction().remove(thongKe).commit();
         fragmentManager.beginTransaction().remove(baoCao).commit();
         fragmentManager.beginTransaction().remove(doiMatKhau).commit();

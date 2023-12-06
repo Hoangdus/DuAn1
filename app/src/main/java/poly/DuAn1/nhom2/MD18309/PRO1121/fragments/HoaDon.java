@@ -12,6 +12,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -72,6 +75,8 @@ public class HoaDon extends Fragment {
         //Khai Báo
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         ViewPager2 viewPager2 = view.findViewById(R.id.viewPager);
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        Window window = getActivity().getWindow();
 
         //Tạo ViewPager Adapter
         ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
@@ -99,8 +104,12 @@ public class HoaDon extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() == 0){
                     tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.primary_color));
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.primary_color));
+                    window.setStatusBarColor(getResources().getColor(R.color.primary_color));
                 } else if (tabLayout.getSelectedTabPosition() == 1) {
-                    tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
+                    tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.teal_green));
+                    toolbar.setBackgroundColor(getResources().getColor(R.color.teal_green));
+                    window.setStatusBarColor(getResources().getColor(R.color.teal_green));
                 }
             }
 

@@ -8,12 +8,15 @@ import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -34,14 +37,25 @@ import poly.DuAn1.nhom2.MD18309.PRO1121.R;
  * Use the {@link ThemMatHang#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ThemMatHang extends Fragment {
+public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentCallBack, DanhSachNhaCungCap.FragmentCallBack{
 
     private Context context;
     private MatHangDAO matHangDAO;
     private NhaCungCapDAO nhaCungCapDAO;
     private NganhHangDAO nganhHangDAO;
+    private FragmentManager fragmentManager;
+    private ScrollView scrollView;
+    private TextInputEditText edtNganhHang;
+    private TextInputEditText edtNhaCungCap;
+    private DanhSachNganhHang danhSachNganhHang;
+    private DanhSachNhaCungCap danhSachNhaCungCap;
     private int idMH;
+    private int idNH;
+    private String tenNH = "";
+    private int idNCC;
+    private String tenNCC = "";
     FragmentCallBack fragmentCallBack;
+
     public interface FragmentCallBack{
         void finishCall(int result);
     }
@@ -103,6 +117,10 @@ public class ThemMatHang extends Fragment {
         Button btnDelete = view.findViewById(R.id.btnDelete);
         AtomicBoolean editMode = new AtomicBoolean(false);
 
+        scrollView = view.findViewById(R.id.scrollView);
+        fragmentManager = getChildFragmentManager();
+
+
         TextInputLayout edtTenMatHangLayout = view.findViewById(R.id.edtTenmathangLayout);
         TextInputLayout edtNhaCungCapLayout = view.findViewById(R.id.edtNhaCungCapLayout);
         TextInputLayout edtNganhHangLayout = view.findViewById(R.id.edtNganhhangLayout);
@@ -112,12 +130,28 @@ public class ThemMatHang extends Fragment {
         TextInputLayout edtDVTLayout = view.findViewById(R.id.edtDVTLayout);
 
         TextInputEditText edtTenMatHang = view.findViewById(R.id.edtTenmathang);
-        TextInputEditText edtNhaCungCap = view.findViewById(R.id.edtNhacungcap);
-        TextInputEditText edtNganhHang = view.findViewById(R.id.edtNganhhang);
+        edtNhaCungCap = view.findViewById(R.id.edtNhacungcap);
+        edtNganhHang = view.findViewById(R.id.edtNganhhang);
         TextInputEditText edtGiaNhap = view.findViewById(R.id.edtGianhap);
         TextInputEditText edtGiaBan = view.findViewById(R.id.edtGiaban);
         TextInputEditText edtSoLuong = view.findViewById(R.id.edtSoluong);
         TextInputEditText edtDVT = view.findViewById(R.id.edtDVT);
+
+        danhSachNganhHang = new DanhSachNganhHang(1,this);
+        danhSachNhaCungCap = new DanhSachNhaCungCap(1,this);
+
+        edtNhaCungCap.setFocusable(false);
+        edtNganhHang.setFocusable(false);
+
+        edtNhaCungCap.setOnClickListener(v -> {
+            scrollView.setVisibility(View.GONE);
+            fragmentManager.beginTransaction().replace(R.id.framelayout, danhSachNhaCungCap).commit();
+        });
+
+        edtNganhHang.setOnClickListener(v -> {
+            scrollView.setVisibility(View.GONE);
+            fragmentManager.beginTransaction().replace(R.id.framelayout, danhSachNganhHang).commit();
+        });
 
         //Chuyển chế độ dựa trên tham số
         if (idMH != -1){
@@ -136,11 +170,9 @@ public class ThemMatHang extends Fragment {
             edtSoLuong.setText(matHang.getSoLuongMatHang()+"");
             edtDVT.setText(matHang.getDonViTinh());
 
-            edtNhaCungCap.setEnabled(false);
             edtTenMatHang.setEnabled(false);
             edtSoLuong.setEnabled(false);
             edtDVT.setEnabled(false);
-            edtNganhHang.setEnabled(false);
             edtGiaBan.setEnabled(false);
             edtGiaNhap.setEnabled(false);
         }else{
@@ -180,7 +212,7 @@ public class ThemMatHang extends Fragment {
                         Handler handler = new Handler();
                         handler.postDelayed(runnable, 1200);
                     }else{
-                        if (matHangDAO.updateMatHang(new MatHang(idMH, 1, 1, tenMatHang, Float.parseFloat(soLuong), dVT, Integer.parseInt(giaNhap), Integer.parseInt(giaBan), 0))){
+                        if (matHangDAO.updateMatHang(new MatHang(idMH, idNCC, idNH, tenMatHang, Float.parseFloat(soLuong), dVT, Integer.parseInt(giaNhap), Integer.parseInt(giaBan), 0))){
                             Toast.makeText(getContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();
                             fragmentCallBack.finishCall(2);
                         }else{
@@ -190,11 +222,11 @@ public class ThemMatHang extends Fragment {
                     }
                 }else{
                     btnAdd.setText("Xong");
-                    edtNhaCungCap.setEnabled(true);
+//                    edtNhaCungCap.setEnabled(true);
                     edtTenMatHang.setEnabled(true);
                     edtSoLuong.setEnabled(true);
                     edtDVT.setEnabled(true);
-                    edtNganhHang.setEnabled(true);
+//                    edtNganhHang.setEnabled(true);
                     edtGiaBan.setEnabled(true);
                     edtGiaNhap.setEnabled(true);
                     edtTenMatHang.requestFocus();
@@ -222,7 +254,7 @@ public class ThemMatHang extends Fragment {
                     Handler handler = new Handler();
                     handler.postDelayed(runnable, 1200);
                 }else{
-                    if (matHangDAO.AddMatHang(new MatHang(0, 1, 1, tenMatHang, Float.parseFloat(soLuong), dVT, Integer.parseInt(giaNhap), Integer.parseInt(giaBan), 0))){
+                    if (matHangDAO.AddMatHang(new MatHang(0, idNCC, idNH, tenMatHang, Float.parseFloat(soLuong), dVT, Integer.parseInt(giaNhap), Integer.parseInt(giaBan), 0))){
                         Toast.makeText(getContext(), "Thêm Thành Công", Toast.LENGTH_SHORT).show();
                         fragmentCallBack.finishCall(1);
                     }else{
@@ -252,4 +284,36 @@ public class ThemMatHang extends Fragment {
         });
         return view;
     }
+
+
+    @Override
+    public void enterAddFragment(String title) {
+
+    }
+
+    @Override
+    public void exitAddFragment() {
+        scrollView.setVisibility(View.VISIBLE);
+        fragmentManager.beginTransaction().remove(danhSachNganhHang).commit();
+        fragmentManager.beginTransaction().remove(danhSachNhaCungCap).commit();
+        if (!tenNH.isEmpty()){
+            edtNganhHang.setText(tenNH);
+        }
+        if(!tenNCC.isEmpty()){
+            edtNhaCungCap.setText(tenNCC);
+        }
+    }
+
+    @Override
+    public void returnNCCData(int id, String tenNCC) {
+        idNCC = id;
+        this.tenNCC = tenNCC;
+    }
+
+    @Override
+    public void returnNHData(int id, String tenNH) {
+        idNH = id;
+        this.tenNH = tenNH;
+    }
+
 }

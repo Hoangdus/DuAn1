@@ -68,7 +68,7 @@ public class DanhSachHoaDonBan extends Fragment implements HoaDonAdapter.OnItemC
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new HoaDonAdapter(getContext(), new HoaDonDAO(getContext()).getHoaDonList(), this));
+        recyclerView.setAdapter(new HoaDonAdapter(getContext(), new HoaDonDAO(getContext()).getHoaDonList(), "ban",this));
         return view;
     }
 

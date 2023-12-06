@@ -5,16 +5,20 @@ public class HoaDon {
     private String idNguoiTao;
     private String idNguoiMua;
     private String ngayTao;
+    private String loai;
     private int trangThai;
+    private int status;
 
     public HoaDon() {}
 
-    public HoaDon(int idHD, String idNguoiTao, String idNguoiMua, String ngayTao, int trangThai) {
+    public HoaDon(int idHD, String idNguoiTao, String idNguoiMua, String ngayTao, String loai, int trangThai, int status) {
         this.idHD = idHD;
         this.idNguoiTao = idNguoiTao;
         this.idNguoiMua = idNguoiMua;
         this.ngayTao = ngayTao;
+        this.loai = loai;
         this.trangThai = trangThai;
+        this.status = status;
     }
 
     public int getIdHD() {
@@ -55,5 +59,13 @@ public class HoaDon {
 
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

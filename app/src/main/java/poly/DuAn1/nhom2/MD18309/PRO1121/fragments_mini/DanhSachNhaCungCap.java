@@ -40,11 +40,13 @@ public class DanhSachNhaCungCap extends Fragment implements NhaCungCapAdapter.On
     private ArrayList<NhaCungCap> nhaCungCapArrayList;
     private NhaCungCapAdapter nhaCungCapAdapter;
     private int holderPOS;
-
+    private int mode;
     FragmentCallBack fragmentCallBack;
+
     public interface FragmentCallBack{
         void enterAddFragment(String title);
         void exitAddFragment();
+        void returnNCCData(int id, String tenNCC);
     }
 
 
@@ -61,8 +63,9 @@ public class DanhSachNhaCungCap extends Fragment implements NhaCungCapAdapter.On
         // Required empty public constructor
     }
 
-    public DanhSachNhaCungCap(FragmentCallBack fragmentCallBack) {
+    public DanhSachNhaCungCap(int mode, FragmentCallBack fragmentCallBack) {
         this.fragmentCallBack = fragmentCallBack;
+        this.mode = mode;
     }
 
     /**
@@ -161,14 +164,21 @@ public class DanhSachNhaCungCap extends Fragment implements NhaCungCapAdapter.On
     }
 
     @Override
-    public void onItemClick(int id, int holderPOS) {
+    public void onItemClick(int id, String ten) {
+        if (mode == 1){
+            fragmentCallBack.returnNCCData(id, ten);
+            fragmentCallBack.exitAddFragment();
+        }
+    }
+
+    @Override
+    public void onLongItemClick(int id, int holderPOS) {
         System.out.println(id);
         this.holderPOS = holderPOS;
         themNhaCungCap = new ThemNhaCungCap(getContext(), id, this);
         fragmentManager.beginTransaction().replace(R.id.framelayout, themNhaCungCap).commit();
         constraintLayout.setVisibility(View.INVISIBLE);
         fragmentCallBack.enterAddFragment("Thông Tin N.C.C");
-//        Toast.makeText(getContext(), "Tưởng Tượng Màn Hình Thông Tin Chi Tiết", Toast.LENGTH_SHORT).show();
     }
 
     @Override

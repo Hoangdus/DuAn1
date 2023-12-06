@@ -30,7 +30,9 @@ public class HoaDonDAO {
                             cursor.getString(1),
                             cursor.getString(2),
                             cursor.getString(3),
-                            cursor.getInt(4)));
+                            cursor.getString(4),
+                            cursor.getInt(5),
+                            cursor.getInt(6)));
                     cursor.moveToNext();
                 }
                 cursor.close();

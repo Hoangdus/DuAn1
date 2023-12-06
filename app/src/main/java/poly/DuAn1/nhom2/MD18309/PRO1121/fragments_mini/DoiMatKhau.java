@@ -59,7 +59,7 @@ public class DoiMatKhau extends Fragment {
                 taiKhoan.setPassWord(EdtNP.getText().toString());
                 if(TKDAO.updateTaiKhoan(taiKhoan)) {
                     Toast.makeText(getContext(), "Tay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                    //fragmentCallBack.exitFragment();
+//                    fragmentCallBack.exitFragment();
                 }
                 else
                     Toast.makeText(getContext(), "Thay đổi thất bại, đã xẩy ra lỗi", Toast.LENGTH_SHORT).show();

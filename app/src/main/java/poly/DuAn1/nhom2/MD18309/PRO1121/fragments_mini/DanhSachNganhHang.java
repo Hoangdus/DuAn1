@@ -42,11 +42,15 @@ public class DanhSachNganhHang extends Fragment implements NganhHangAdapter.OnIt
     private NganhHangAdapter nganhHangAdapter;
     private ArrayList<NganhHang> nganhHangArrayList;
     private int holderPOS;
+    private int mode;
     FragmentCallBack fragmentCallBack;
+
+
 
     public interface FragmentCallBack{
         void enterAddFragment(String title);
         void exitAddFragment();
+        void returnNHData(int id, String tenNH);
     }
 
     // TODO: Rename parameter arguments, choose names that match
@@ -62,8 +66,9 @@ public class DanhSachNganhHang extends Fragment implements NganhHangAdapter.OnIt
         // Required empty public constructor
     }
 
-    public DanhSachNganhHang(FragmentCallBack fragmentCallBack) {
+    public DanhSachNganhHang(int mode,FragmentCallBack fragmentCallBack) {
         this.fragmentCallBack = fragmentCallBack;
+        this.mode = mode;
     }
 
     /**
@@ -165,7 +170,7 @@ public class DanhSachNganhHang extends Fragment implements NganhHangAdapter.OnIt
 
     //Xem Thông Tin Ngành Hàng
     @Override
-    public void onClickListener(int id, int holderPOS) {
+    public void onLongClickListenter(int id, int holderPOS) {
         System.out.println(id);
         this.holderPOS = holderPOS;
         themNganhHang = new ThemNganhHang(getContext(), id, this);
@@ -173,6 +178,16 @@ public class DanhSachNganhHang extends Fragment implements NganhHangAdapter.OnIt
         constraintLayout.setVisibility(View.INVISIBLE);
         fragmentCallBack.enterAddFragment("Thông Tin Ngành Hàng");
     }
+
+    //Lấy thông tin cho việc thêm mặt hàng
+    @Override
+    public void onClickListener(int id, String ten) {
+        if (mode == 1){
+            fragmentCallBack.returnNHData(id, ten);
+            fragmentCallBack.exitAddFragment();
+        }
+    }
+
 
     @Override
     public void finishCall(int result) {

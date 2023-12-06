@@ -27,7 +27,9 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
     private static OnItemClickCallBack onItemClickCallBack;
 
     public interface OnItemClickCallBack{
-        void onItemClick(int id, int holderPOS);
+        void onItemClick(int id, String ten);
+
+        void onLongItemClick(int id, int holderPOS);
     }
 
     public NhaCungCapAdapter(Context context, ArrayList<NhaCungCap> nhaCungCapArrayList, OnItemClickCallBack onItemClickCallBack) {
@@ -89,11 +91,12 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
 
         @Override
         public void onClick(View v) {
+            onItemClickCallBack.onItemClick(Integer.parseInt(txtMaNCC.getText().toString().replaceAll("[^0-9]", "")), txtTenNCC.getText().toString());
         }
 
         @Override
         public boolean onLongClick(View v) {
-            onItemClickCallBack.onItemClick(Integer.parseInt(txtMaNCC.getText().toString().replaceAll("[^0-9]", "")), holderPOS);
+            onItemClickCallBack.onLongItemClick(Integer.parseInt(txtMaNCC.getText().toString().replaceAll("[^0-9]", "")), holderPOS);
             return true;
         }
     }
