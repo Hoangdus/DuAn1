@@ -33,7 +33,7 @@ import poly.DuAn1.nhom2.MD18309.PRO1121.R;
  * Use the {@link DanhSachNhanVien#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DanhSachNhanVien extends Fragment implements NhanVienAdapter.OnItemClickCallBack {
+public class DanhSachNhanVien extends Fragment implements NhanVienAdapter.OnItemClickCallBack, ThemNhanVien.FragmentCallBack {
 
     private RecyclerView recyclerView;
     private FragmentManager fragmentManager;
@@ -42,6 +42,7 @@ public class DanhSachNhanVien extends Fragment implements NhanVienAdapter.OnItem
     private ArrayList<TaiKhoan> listTaiKhoan;
     private NhanVienAdapter nhanVienAdapter;
     private int holderPOS;
+    private ThemNhanVien themNhanVien;
     private FragmentCallBack fragmentCallBack;
 
     public interface FragmentCallBack{
@@ -133,6 +134,12 @@ public class DanhSachNhanVien extends Fragment implements NhanVienAdapter.OnItem
             }
         });
 
+        btnAdd.setOnClickListener(v -> {
+            themNhanVien = new ThemNhanVien("Thêm Nhân Viên", "", this);
+            constraintLayout.setVisibility(View.GONE);
+            fragmentManager.beginTransaction().replace(R.id.framelayout, themNhanVien).commit();
+        });
+
         loadList();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -157,12 +164,28 @@ public class DanhSachNhanVien extends Fragment implements NhanVienAdapter.OnItem
     }
 
     @Override
-    public void onClickListener(int id, String ten) {
+    public void onClickListener(String userName, String ten) {
 
     }
 
     @Override
-    public void onLongClickListenter(int id, int holderPOS) {
-
+    public void onLongClickListenter(String userName, int holderPOS) {
+        this.holderPOS = holderPOS;
+        themNhanVien = new ThemNhanVien("Xem và sửa thông tin", userName, this);
+        fragmentManager.beginTransaction().replace(R.id.framelayout, themNhanVien).commit();
+        constraintLayout.setVisibility(View.GONE);
     }
+
+    @Override
+    public void finishCall(int result) {
+        fragmentManager.beginTransaction().remove(themNhanVien).commit();
+        constraintLayout.setVisibility(View.VISIBLE);
+        if (result == 1){
+            loadList();
+            setAdapter(listTaiKhoan);
+        }else if (result == 2){
+            nhanVienAdapter.notifyChange(holderPOS);
+        }
+    }
+
 }

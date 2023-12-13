@@ -48,7 +48,7 @@ public class TaiKhoanDAO {
             Cursor cursor = database.rawQuery("SELECT ROLE, HOTEN, PHONE, EMAIL, STATUS FROM TAIKHOAN WHERE UserName=? AND Password=?", new String[]{tk, mk});
             if (cursor != null && cursor.getCount() > 0){
                 cursor.moveToFirst();
-                taiKhoan = new TaiKhoan("", cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4));
+                taiKhoan = new TaiKhoan(tk, cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4));
                 cursor.close();
             }
             database.setTransactionSuccessful();
@@ -91,8 +91,10 @@ public class TaiKhoanDAO {
         SQLiteDatabase database = dbFucker.getWritableDatabase();
         boolean result = false;
         database.beginTransaction();
+        ContentValues pairs = new ContentValues();
+        pairs.put("STATUS", 1);
         try {
-            long kq = database.delete("TAIKHOAN", "UserName = ?", new String[]{username});
+            long kq = database.update("TAIKHOAN", pairs, "UserName = ?", new String[]{username});
             if (kq > -1) {
                 result = true;
             }
@@ -129,7 +131,6 @@ public class TaiKhoanDAO {
         } finally {
             database.endTransaction();
         }
-
         return result;
     }
 
@@ -156,14 +157,35 @@ public class TaiKhoanDAO {
         return result;
     }
 
-    public boolean changePass(String userName, String oldPass, String newPass) {
+    public TaiKhoan getTaiKhoan(String tk){
+        TaiKhoan taiKhoan = null;
+        SQLiteDatabase database = dbFucker.getReadableDatabase();
+        database.beginTransaction();
+        try{
+            Cursor cursor = database.rawQuery("SELECT * FROM TAIKHOAN WHERE UserName = ?", new String[]{tk});
+            if (cursor != null && cursor.getCount() > 0){
+                cursor.moveToFirst();
+                taiKhoan = new TaiKhoan(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6));
+                cursor.close();
+            }
+            database.setTransactionSuccessful();
+            }catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            database.endTransaction();
+        }
+        return taiKhoan;
+    }
+
+    public boolean changePass(String userName, String newPass) {
         boolean result = false;
         SQLiteDatabase database = dbFucker.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Password", newPass);
         database.beginTransaction();
+        String sqlQuerry = "";
         try {
-            long kq = database.update("TAIKHOAN", values, "UserName = ? AND PassWord = ?", new String[]{userName, oldPass});
+            long kq = database.update("TAIKHOAN", values, "UserName = ?", new String[]{userName});
             if (kq != -1) {
                 result = true;
             }

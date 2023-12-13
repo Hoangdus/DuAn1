@@ -58,7 +58,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewFucker
     }
 
     private TaiKhoan findTaiKhoan(String userName){
-        for (int i = 0; i <= taiKhoanArrayList.size(); i++){
+        for (int i = 0; i < taiKhoanArrayList.size(); i++){
             if (taiKhoanArrayList.get(i).getUserName().equalsIgnoreCase(userName)){
                 return taiKhoanArrayList.get(i);
             }

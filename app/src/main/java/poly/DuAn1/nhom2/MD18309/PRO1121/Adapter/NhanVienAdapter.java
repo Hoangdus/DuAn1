@@ -25,9 +25,9 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewFu
     private static OnItemClickCallBack onItemClickCallBack;
 
     public interface OnItemClickCallBack{
-        void onClickListener(int id, String ten);
+        void onClickListener(String userName, String ten);
 
-        void onLongClickListenter(int id, int holderPOS);
+        void onLongClickListenter(String userName, int holderPOS);
     }
 
     public NhanVienAdapter(Context context, ArrayList<TaiKhoan> taiKhoanArrayList, OnItemClickCallBack onItemClickCallBack) {
@@ -52,7 +52,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewFu
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewFucker holder, int position) {
-
+        holder.holderPOS = holder.getAdapterPosition();
         holder.txtHoTen.setText(taiKhoanArrayList.get(holder.getAdapterPosition()).getHoTen());
         holder.txtMa.setText("Username: "+taiKhoanArrayList.get(holder.getAdapterPosition()).getUserName());
         holder.txtSDT.setText("SĐT: "+taiKhoanArrayList.get(holder.getAdapterPosition()).getPhone());
@@ -101,12 +101,12 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewFu
 
         @Override
         public void onClick(View v) {
-            onItemClickCallBack.onClickListener(Integer.parseInt(txtMa.getText().toString().replaceAll("[^0-9]", "")), txtHoTen.getText().toString());
+            onItemClickCallBack.onClickListener(txtMa.getText().toString().substring(10), txtHoTen.getText().toString());
         }
 
         @Override
         public boolean onLongClick(View v) {
-            onItemClickCallBack.onLongClickListenter(Integer.parseInt(txtMa.getText().toString().replaceAll("[^0-9]", "")), holderPOS);
+            onItemClickCallBack.onLongClickListenter(txtMa.getText().toString().substring(10), holderPOS);
             return true;
         }
     }

@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import poly.DuAn1.nhom2.MD18309.PRO1121.fragments_mini.BaoCao;
+import poly.DuAn1.nhom2.MD18309.PRO1121.fragments_mini.CongViec;
 import poly.DuAn1.nhom2.MD18309.PRO1121.fragments_mini.DanhSachKhachHang;
 import poly.DuAn1.nhom2.MD18309.PRO1121.fragments_mini.DoiMatKhau;
 import poly.DuAn1.nhom2.MD18309.PRO1121.ObjectClass.TaiKhoan;
@@ -26,17 +26,16 @@ import poly.DuAn1.nhom2.MD18309.PRO1121.fragments_mini.DanhSachNhanVien;
  * Use the {@link Menu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack, DanhSachNhanVien.FragmentCallBack, ThongKe.FragmentCallBack, DoiMatKhau.FragmentCallBack, BaoCao.FragmentCallBack {
+public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack, DanhSachNhanVien.FragmentCallBack, ThongKe.FragmentCallBack, DoiMatKhau.FragmentCallBack, CongViec.FragmentCallBack {
 
     private TaiKhoan taiKhoan;
     private FragmentManager fragmentManager;
     private LinearLayout parentLayout;
-
     //Fragment
     private DanhSachNhanVien danhSachNhanVien;
     private DanhSachKhachHang danhSachKhachHang;
     private DoiMatKhau doiMatKhau;
-    private BaoCao baoCao;
+    private CongViec baoCao;
     private ThongKe thongKe;
 
     private FragmentCallBack fragmentCallBack;
@@ -110,9 +109,8 @@ public class Menu extends Fragment implements DanhSachKhachHang.FragmentCallBack
         danhSachNhanVien = new DanhSachNhanVien(this);
         danhSachKhachHang = new DanhSachKhachHang(this);
         thongKe = new ThongKe(this);
-        baoCao = new BaoCao(this);
+        baoCao = new CongViec(this);
         doiMatKhau = new DoiMatKhau(this, taiKhoan);
-
         //Hiện Thị Thông Tin
         txtHoTen.setText(taiKhoan.getHoTen());
 

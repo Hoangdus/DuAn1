@@ -1,117 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/Theme.Material3.DayNight"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông tin khách hàng"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtTenkhachhangLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tên khách hàng"
-                android:id="@+id/edtTenkhachhang"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtSodienthoaiLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Số điện thoại"
-                android:id="@+id/edtSodienthoai"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            app:boxStrokeWidth="3dp"
-            app:boxStrokeColor="@color/primary_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxStrokeErrorColor="@android:color/holo_red_light"
-            android:id="@+id/edtEmailLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:id="@+id/edtEmail"
-                android:lines="1">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments_mini.ThemKhachHang">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_height="match_parent"
+            android:theme="@style/Theme.Material3.DayNight"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PlaceHolder"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/title"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/primary_color"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
+                android:id="@+id/edtHotenLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tên khách hàng"
+                    android:id="@+id/edtHoten"
+                    android:lines="1">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/primary_color"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
+                android:id="@+id/edtSodienthoaiLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Số điện thoại"
+                    android:id="@+id/edtSodienthoai"
+                    android:lines="1">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeColor="@color/primary_color"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeErrorColor="@android:color/holo_red_light"
+                android:id="@+id/edtEmailLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:id="@+id/edtEmail"
+                    android:lines="1">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_marginEnd="10dp"
+                    android:text="Hủy"
+                    android:id="@+id/btnCancel"
+                    android:background="@drawable/cancel_button_background"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="HOÀN THÀNH"
+                    android:id="@+id/btnAdd"
+                    android:background="@drawable/button_background"/>
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginEnd="10dp"
-                android:text="Hủy"
-                android:id="@+id/btnCancel"
-                android:background="@drawable/cancel_button_background"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="HOÀN THÀNH"
-                android:id="@+id/btnAdd"
-                android:background="@drawable/button_background"/>
+                android:layout_marginTop="10dp"
+                android:text="Xóa"
+                android:id="@+id/btnDelete"
+                android:background="@drawable/cancel_button_background"
+                />
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Xóa"
-            android:id="@+id/btnDelete"
-            android:background="@drawable/cancel_button_background"
-            />
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

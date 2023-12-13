@@ -115,7 +115,6 @@ public class NganhHangDAO {
                 nganhHang = new NganhHang(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
                 cursor.close();
             }
-
             database.setTransactionSuccessful();
         }catch (Exception e){
             throw new RuntimeException(e);

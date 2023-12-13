@@ -53,6 +53,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewFucker holder, int position) {
+        holder.holderPOS = holder.getAdapterPosition();
         holder.txtHoTen.setText(khachHangArrayList.get(holder.getAdapterPosition()).getHoTenKH());
         holder.txtMa.setText("Mã: "+khachHangArrayList.get(holder.getAdapterPosition()).getIdKH());
         holder.txtSDT.setText("SĐT: "+khachHangArrayList.get(holder.getAdapterPosition()).getPhoneKH());

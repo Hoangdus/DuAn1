@@ -120,7 +120,6 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
         scrollView = view.findViewById(R.id.scrollView);
         fragmentManager = getChildFragmentManager();
 
-
         TextInputLayout edtTenMatHangLayout = view.findViewById(R.id.edtTenmathangLayout);
         TextInputLayout edtNhaCungCapLayout = view.findViewById(R.id.edtNhaCungCapLayout);
         TextInputLayout edtNganhHangLayout = view.findViewById(R.id.edtNganhhangLayout);
@@ -159,8 +158,10 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
             btnCancel.setText("Thoát");
             btnCancel.setBackground(ContextCompat.getDrawable(context, R.drawable.button_background));
             MatHang matHang = matHangDAO.getMatHangByID(idMH);
-            NganhHang nganhHang = nganhHangDAO.getNganhHangByID(matHang.getIdNganhHang());
-            NhaCungCap nhaCungCap = nhaCungCapDAO.getNhaCungCapByID(matHang.getIdNhaCungCap());
+            idNH = matHang.getIdNganhHang();
+            idNCC = matHang.getIdNhaCungCap();
+            NganhHang nganhHang = nganhHangDAO.getNganhHangByID(idNH);
+            NhaCungCap nhaCungCap = nhaCungCapDAO.getNhaCungCapByID(idNCC);
 
             edtNhaCungCap.setText(nhaCungCap.getTenNhaCungCap());
             edtTenMatHang.setText(matHang.getTenMatHang());
@@ -175,6 +176,8 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
             edtDVT.setEnabled(false);
             edtGiaBan.setEnabled(false);
             edtGiaNhap.setEnabled(false);
+            edtNganhHang.setEnabled(false);
+            edtNhaCungCap.setEnabled(false);
         }else{
             btnDelete.setVisibility(View.INVISIBLE);
         }
@@ -222,11 +225,11 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
                     }
                 }else{
                     btnAdd.setText("Xong");
-//                    edtNhaCungCap.setEnabled(true);
+                    edtNhaCungCap.setEnabled(true);
                     edtTenMatHang.setEnabled(true);
                     edtSoLuong.setEnabled(true);
                     edtDVT.setEnabled(true);
-//                    edtNganhHang.setEnabled(true);
+                    edtNganhHang.setEnabled(true);
                     edtGiaBan.setEnabled(true);
                     edtGiaNhap.setEnabled(true);
                     edtTenMatHang.requestFocus();
@@ -285,7 +288,6 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
         return view;
     }
 
-
     @Override
     public void enterAddFragment(String title) {
 
@@ -307,6 +309,7 @@ public class ThemMatHang extends Fragment implements DanhSachNganhHang.FragmentC
     @Override
     public void returnNCCData(int id, String tenNCC) {
         idNCC = id;
+        System.out.println(id);
         this.tenNCC = tenNCC;
     }
 

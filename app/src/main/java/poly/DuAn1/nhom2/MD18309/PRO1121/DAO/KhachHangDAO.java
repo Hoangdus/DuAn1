@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import poly.DuAn1.nhom2.MD18309.PRO1121.DBFucker;
 import poly.DuAn1.nhom2.MD18309.PRO1121.ObjectClass.KhachHang;
+import poly.DuAn1.nhom2.MD18309.PRO1121.ObjectClass.NganhHang;
 
 public class KhachHangDAO {
     private final DBFucker dbFucker;
@@ -28,8 +29,8 @@ public class KhachHangDAO {
                 while (!cursor.isAfterLast()) {
                     listKH.add(new KhachHang(cursor.getInt(0),
                             cursor.getString(1),
-                            cursor.getString(2),
                             cursor.getString(3),
+                            cursor.getString(2),
                             cursor.getInt(4)));
                     cursor.moveToNext();
                 }
@@ -50,12 +51,10 @@ public class KhachHangDAO {
         SQLiteDatabase database = dbFucker.getWritableDatabase();
         database.beginTransaction();
         ContentValues values = new ContentValues();
-        values.put("idKH", khachhang.getIdKH());
         values.put("HoTen", khachhang.getHoTenKH());
         values.put("Email", khachhang.getAddressKH());
         values.put("SdtKH", khachhang.getPhoneKH());
         values.put("STATUS", 0);
-
         try {
             long kq = database.insert("KHACHHANG", null, values);
             if (kq != -1) {
@@ -75,8 +74,10 @@ public class KhachHangDAO {
         SQLiteDatabase database = dbFucker.getWritableDatabase();
         boolean result = false;
         database.beginTransaction();
+        ContentValues pairs = new ContentValues();
+        pairs.put("STATUS", 1);
         try {
-            long kq = database.delete("KHACHHANG", "idKH = ?", new String[]{String.valueOf(id)});
+            long kq = database.update("KHACHHANG", pairs, "idKH = ?", new String[]{String.valueOf(id)});
             if (kq > -1) {
                 result = true;
             }
@@ -112,5 +113,28 @@ public class KhachHangDAO {
         }
 
         return result;
+    }
+
+    public KhachHang getKhachHangbyID(int id){
+        KhachHang khachHang = null;
+        SQLiteDatabase database = dbFucker.getReadableDatabase();
+        database.beginTransaction();
+        try{
+            Cursor cursor = database.rawQuery("SELECT * FROM KHACHHANG Where idKH=?", new String[]{String.valueOf(id)});
+            if(cursor != null && cursor.getCount() > 0 && cursor.moveToFirst()){
+                khachHang = new KhachHang(cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(3),
+                        cursor.getString(2),
+                        cursor.getInt(4));
+                cursor.close();
+            }
+            database.setTransactionSuccessful();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }finally {
+            database.endTransaction();
+        }
+        return khachHang;
     }
 }

@@ -14,10 +14,10 @@ import poly.DuAn1.nhom2.MD18309.PRO1121.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BaoCao#newInstance} factory method to
+ * Use the {@link CongViec#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BaoCao extends Fragment {
+public class CongViec extends Fragment {
 
     private FragmentCallBack fragmentCallBack;
     public interface FragmentCallBack{
@@ -34,11 +34,11 @@ public class BaoCao extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BaoCao() {
+    public CongViec() {
         // Required empty public constructor
     }
 
-    public BaoCao(FragmentCallBack fragmentCallBack) {
+    public CongViec(FragmentCallBack fragmentCallBack) {
         this.fragmentCallBack = fragmentCallBack;
     }
 
@@ -51,8 +51,8 @@ public class BaoCao extends Fragment {
      * @return A new instance of fragment BaoCao.
      */
     // TODO: Rename and change types and number of parameters
-    public static BaoCao newInstance(String param1, String param2) {
-        BaoCao fragment = new BaoCao();
+    public static CongViec newInstance(String param1, String param2) {
+        CongViec fragment = new CongViec();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,7 +71,7 @@ public class BaoCao extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bao_cao, container, false);
+        View view = inflater.inflate(R.layout.fragment_quan_ly_cong_viec, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("");
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);

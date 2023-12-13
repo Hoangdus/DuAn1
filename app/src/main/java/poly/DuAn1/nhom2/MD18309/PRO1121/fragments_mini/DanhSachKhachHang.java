@@ -33,7 +33,7 @@ import poly.DuAn1.nhom2.MD18309.PRO1121.R;
  * Use the {@link DanhSachKhachHang#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnItemClickCallBack{
+public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnItemClickCallBack, ThemKhachHang.FragmentCallBack{
 
     private RecyclerView recyclerView;
 //    private ThemMatHang themMatHang;
@@ -42,6 +42,7 @@ public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnIt
     private KhachHangDAO khachHangDAO;
     private ArrayList<KhachHang> listKhachHang;
     private KhachHangAdapter khachHangAdapter;
+    private ThemKhachHang themKhachHang;
     private int holderPOS;
     private FragmentCallBack fragmentCallBack;
 
@@ -133,6 +134,12 @@ public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnIt
             }
         });
 
+        btnAdd.setOnClickListener(v -> {
+            themKhachHang = new ThemKhachHang(-1, "Thêm Khách Hàng", this);
+            constraintLayout.setVisibility(View.GONE);
+            fragmentManager.beginTransaction().replace(R.id.framelayout, themKhachHang).commit();
+        });
+
         loadList();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -156,6 +163,17 @@ public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnIt
         recyclerView.setAdapter(khachHangAdapter);
     }
 
+    @Override
+    public void finishCall(int result) {
+        fragmentManager.beginTransaction().remove(themKhachHang).commit();
+        constraintLayout.setVisibility(View.VISIBLE);
+        if(result == 1){
+            loadList();
+            setAdapter(listKhachHang);
+        } else if (result == 2) {
+            khachHangAdapter.notifyChange(holderPOS);
+        }
+    }
 
     @Override
     public void onClickListener(int id, String ten) {
@@ -164,7 +182,10 @@ public class DanhSachKhachHang extends Fragment implements KhachHangAdapter.OnIt
 
     @Override
     public void onLongClickListenter(int id, int holderPOS) {
-
+        this.holderPOS = holderPOS;
+        themKhachHang = new ThemKhachHang(id, "Xem và sửa thông tin", this);
+        fragmentManager.beginTransaction().replace(R.id.framelayout, themKhachHang).commit();
+        constraintLayout.setVisibility(View.GONE);
     }
 
 }

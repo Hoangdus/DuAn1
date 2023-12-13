@@ -45,8 +45,6 @@ public class DanhSachNganhHang extends Fragment implements NganhHangAdapter.OnIt
     private int mode;
     FragmentCallBack fragmentCallBack;
 
-
-
     public interface FragmentCallBack{
         void enterAddFragment(String title);
         void exitAddFragment();

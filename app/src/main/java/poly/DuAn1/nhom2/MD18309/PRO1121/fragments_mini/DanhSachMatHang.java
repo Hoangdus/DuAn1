@@ -163,7 +163,7 @@ public class DanhSachMatHang extends Fragment implements MatHangAdapter.OnItemCl
     //Xem Thông Tin
     @Override
     public void onClickListener(int id, int holderPOS) {
-        System.out.println(id);
+//        System.out.println(id);
         this.holderPOS = holderPOS;
 //        System.out.println(holderPOS);
 //        Toast.makeText(getContext(), "Tưởng Tượng Màn Hình Thông Tin Chi Tiết", Toast.LENGTH_SHORT).show();
