@@ -110,9 +110,9 @@ public class TrangChu extends Fragment implements GridItemAdapter.OnClickCallBac
             avatar.setImageResource(R.drawable.user_admin);
             gridItemArrayList.add(new GridItem("Thống Kê", "Doanh Thu Tăng", R.drawable.bar_chart));
             gridItemArrayList.add(new GridItem("Hóa Đơn", "Hóa Đơn Bán Trong Tháng: 3", R.drawable.invoice_selected));
-            gridItemArrayList.add(new GridItem("Mặt Hàng", "Có 2 Mặt Hàng", R.drawable.box_selected));
-            gridItemArrayList.add(new GridItem("Nhà Cung Cấp", "Có 3 Nhà Cung Cấp", R.drawable.box_selected));
-            gridItemArrayList.add(new GridItem("Nhân Viên", "Có 25 Nhân Viên", R.drawable.employees));
+            gridItemArrayList.add(new GridItem("Mặt Hàng", "Có 0 Mặt Hàng", R.drawable.box_selected));
+            gridItemArrayList.add(new GridItem("Nhà Cung Cấp", "", R.drawable.box_selected));
+            gridItemArrayList.add(new GridItem("Nhân Viên", "", R.drawable.employees));
             gridItemArrayList.add(new GridItem("Công Việc", "", R.drawable.calendar));
         }else if (taiKhoan.getRole().equalsIgnoreCase("NhanVien")){
             txtRoleNguoiDung.setText("Chức Vụ: Nhân Viên");
