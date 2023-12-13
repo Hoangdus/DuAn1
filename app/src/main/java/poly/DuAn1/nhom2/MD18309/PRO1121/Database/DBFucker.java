@@ -1,4 +1,4 @@
-package poly.DuAn1.nhom2.MD18309.PRO1121;
+package poly.DuAn1.nhom2.MD18309.PRO1121.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBFucker extends SQLiteOpenHelper {
     public DBFucker(@Nullable Context context) {
-        super(context, "DA1", null, 13);
+        super(context, "DA1", null, 14);
     }
 
     @Override
@@ -31,22 +31,22 @@ public class DBFucker extends SQLiteOpenHelper {
         db.execSQL(createTableChiTietHoaDon);
 
         //Dữ liệu mẫu
-        String dummyTaiKhoan = "INSERT INTO TAIKHOAN VALUES('admin', 'test1', 'quanly', 'Nguyễn Em Tuấn', '0987654321', 'test@test.com', 0), ('nhanvien10', 'test1', 'nhanvien', 'Nguyễn Tuấn Em', '0987654123', 'test2@test.com', 0)";
+        String dummyTaiKhoan = "INSERT INTO TAIKHOAN VALUES('admin', 'test1', 'quanly', 'Nguyễn Em Tuấn', '0987654321', 'test@test.com', 0)";
         db.execSQL(dummyTaiKhoan);
-        String dummyNhaCungCap = "INSERT INTO NHACUNGCAP VALUES(1, 'NCC1', 'NDD1', 'Địa Chỉ 1', '0123456789', 0),(2, 'NCC2', 'NDD2', 'Địa Chỉ 2', '0123654789', 0),(3, 'NCC3', 'NDD3', 'Địa Chỉ 3', '0123456987', 0)";
-        db.execSQL(dummyNhaCungCap);
-        String dummyNganhHang = "INSERT INTO NGANHHANG VALUES(1, 'Nganh Hang 1', 0),(2, 'Nganh Hang 2', 0),(3, 'Nganh Hang 3', 0)";
-        db.execSQL(dummyNganhHang);
-        String dummyKhachHang = "INSERT INTO KHACHHANG VALUES(1, 'KH1', 'Email1', '0911111111', 0),(2, 'KH2', 'Email2', '0922222222', 0),(3, 'KH3', 'Email3', '0933333333', 0)";
-        db.execSQL(dummyKhachHang);
-        String dummyCongViec = "INSERT INTO CONGVIEC VALUES(1, 'admin', 'nhanvien1', 'Dọn Kho', 'Còn gì để nói k?', '01-01-2069', 0), (2, 'admin', 'nhanvien1', 'Sắp Xếp Kho', 'Sắp Xếp Hàng Mới Về', '01-02-2069', 0)";
-        db.execSQL(dummyCongViec);
-        String dummyMatHang = "INSERT INTO MATHANG VALUES(1, 1, 1, 'MH1', 1, 'KG', 10000, 20000, 0),(2, 3, 3, 'MH2', 3, 'Tấn', 20000, 69000, 0)";
-        db.execSQL(dummyMatHang);
-        String dummyHoaDon = "INSERT INTO HOADON VALUES(1, 'admin', 1, '30-10-2023', 'Ban', 0, 1), (2, 'admin', 2, '01-11-2023', 'Nhap', 0, 0), (3, 'nhanvien10', 3, '30-10-2023', 'Ban', 1, 0)";
-        db.execSQL(dummyHoaDon);
-        String dummyChiTietHoaDon = "INSERT INTO CHITIETHOADON VALUES(1, 1, 1, 10), (2, 2 ,2, 45), (3, 3 ,2, 69)";
-        db.execSQL(dummyChiTietHoaDon);
+//        String dummyNhaCungCap = "INSERT INTO NHACUNGCAP VALUES(1, 'NCC1', 'NDD1', 'Địa Chỉ 1', '0123456789', 0),(2, 'NCC2', 'NDD2', 'Địa Chỉ 2', '0123654789', 0),(3, 'NCC3', 'NDD3', 'Địa Chỉ 3', '0123456987', 0)";
+//        db.execSQL(dummyNhaCungCap);
+//        String dummyNganhHang = "INSERT INTO NGANHHANG VALUES(1, 'Nganh Hang 1', 0),(2, 'Nganh Hang 2', 0),(3, 'Nganh Hang 3', 0)";
+//        db.execSQL(dummyNganhHang);
+//        String dummyKhachHang = "INSERT INTO KHACHHANG VALUES(1, 'KH1', 'Email1', '0911111111', 0),(2, 'KH2', 'Email2', '0922222222', 0),(3, 'KH3', 'Email3', '0933333333', 0)";
+//        db.execSQL(dummyKhachHang);
+//        String dummyCongViec = "INSERT INTO CONGVIEC VALUES(1, 'admin', 'nhanvien1', 'Dọn Kho', 'Còn gì để nói k?', '01-01-2069', 0), (2, 'admin', 'nhanvien1', 'Sắp Xếp Kho', 'Sắp Xếp Hàng Mới Về', '01-02-2069', 0)";
+//        db.execSQL(dummyCongViec);
+//        String dummyMatHang = "INSERT INTO MATHANG VALUES(1, 1, 1, 'MH1', 1, 'KG', 10000, 20000, 0),(2, 3, 3, 'MH2', 3, 'Tấn', 20000, 69000, 0)";
+//        db.execSQL(dummyMatHang);
+//        String dummyHoaDon = "INSERT INTO HOADON VALUES(1, 'admin', 1, '30-10-2023', 'Ban', 0, 1), (2, 'admin', 2, '01-11-2023', 'Nhap', 0, 0), (3, 'nhanvien10', 3, '30-10-2023', 'Ban', 1, 0)";
+//        db.execSQL(dummyHoaDon);
+//        String dummyChiTietHoaDon = "INSERT INTO CHITIETHOADON VALUES(1, 1, 1, 10), (2, 2 ,2, 45), (3, 3 ,2, 69)";
+//        db.execSQL(dummyChiTietHoaDon);
     }
 
     @Override

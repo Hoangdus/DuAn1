@@ -72,21 +72,35 @@
                 android:ellipsize="marquee"
                 android:singleLine="true"
                 android:fadingEdge="horizontal"
-                android:textSize="17sp"
+                android:textSize="14sp"
                 android:textStyle="normal">
             </TextView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nhấn giữ để chỉnh sửa"
+                android:text="Nhấn giữ để xem thêm"
                 android:id="@+id/txtGiaMatHang"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:scrollHorizontally="true"
                 android:ellipsize="marquee"
                 android:singleLine="true"
                 android:fadingEdge="horizontal"
-                android:textSize="13sp"
+                android:textSize="14sp"
+                android:textStyle="normal">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhấn giữ để xem thêm"
+                android:id="@+id/txtGiaMatHang2"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:fadingEdge="horizontal"
+                android:textSize="9sp"
                 android:textStyle="normal"
                 android:textColor="#F19C99">
             </TextView>

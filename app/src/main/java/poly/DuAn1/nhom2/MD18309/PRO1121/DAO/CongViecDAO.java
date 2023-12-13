@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-import poly.DuAn1.nhom2.MD18309.PRO1121.DBFucker;
+import poly.DuAn1.nhom2.MD18309.PRO1121.Database.DBFucker;
 import poly.DuAn1.nhom2.MD18309.PRO1121.ObjectClass.CongViec;
 
 public class CongViecDAO {
